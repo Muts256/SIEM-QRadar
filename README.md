@@ -67,7 +67,7 @@ Within QRadar:
 
 ---
 
-### 5. Endpoint Detection & Response (Velociraptor)
+#### 5. Endpoint Detection & Response (Velociraptor)
 The Velociraptor server provides EDR capabilities:
 - Live endpoint monitoring
 - Remote forensic collection (memory, files, logs)
@@ -76,7 +76,7 @@ The Velociraptor server provides EDR capabilities:
 
 ---
 
-### 6. Investigation & Response Workflow
+#### 6. Investigation & Response Workflow
 When an attack is detected:
 1. QRadar identifies suspicious activity (e.g., brute-force or unusual process execution)
 2. Alerts are raised as offenses
@@ -84,11 +84,11 @@ When an attack is detected:
    - Investigate affected endpoints
    - Collect forensic evidence
    - Isolate compromised machines if needed
-4. Findings are correlated back into QRadar for full incident reconstruction
+  
 
 ---
 
-### Outcome
+#### Outcome
 This environment demonstrates:
 - SOC-style monitoring and alert triage
 - Attack detection using SIEM correlation
