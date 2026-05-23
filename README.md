@@ -5,6 +5,16 @@
 
 This lab simulates real-world SOC operations by combining attack emulation, endpoint telemetry collection, SIEM analysis, and endpoint detection and response (EDR) capabilities.
 
+#### Tools 
+- QRadar (SIEM)
+- Windows 2025 - Active Directory (with Sysmon Installed)
+- Windows 10 client (with Sysmon installed)
+- Ubuntu 24 - client 
+- Ubuntu Velociraptor Server
+- Ubuntu Attacker Device 
+- Atomic Red Team Scripts
+
+
 #### Architecture
 
 
@@ -97,8 +107,14 @@ This environment demonstrates:
 
 ---
 
+#### Why the tools
+*IBM QRadar was chosen because it’s widely used in regulated industries like finance and healthcare, which makes it a realistic fit for enterprise SOC environments. It also works well in a mixed Windows and Linux setup, using WinCollect for Windows logs and standard syslog ingestion for Linux systems.*
 
+*With Sysmon providing detailed endpoint telemetry, it becomes much easier to detect and analyse the Atomic Red Team simulations, especially when mapping activity to MITRE ATT&CK techniques. This gives the lab more realistic detection scenarios rather than just raw log collection.*
 
+*On top of that, integrating Velociraptor as an EDR adds a practical incident response layer. It reflects how real SOC teams operate — where alerts from a SIEM lead to deeper endpoint investigations, evidence collection, and potential isolation of affected hosts.*
+
+*Overall, the setup mirrors a real-world SOC workflow from detection through to response, using tools and processes that are common in enterprise environments*
 
 
 
