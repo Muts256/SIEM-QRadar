@@ -23,6 +23,114 @@ This lab simulates real-world SOC operations by combining attack emulation, endp
 
 ---
 
+````mermaid
+flowchart LR
+
+    %% =========================
+    %% ATTACK SIMULATION LAYER
+    %% =========================
+    subgraph Attack_Simulation["Attack Simulation Layer"]
+
+        ART["Atomic Red Team
+        Discovery + Privilege Escalation Tests"]
+
+        ATTACKER["Ubuntu Attacker
+        Python Brute Force Script"]
+
+    end
+
+
+    %% =========================
+    %% ENDPOINTS
+    %% =========================
+    subgraph Endpoints["Endpoints / Victim Systems"]
+
+        WINAD["Windows Server 2025
+        Active Directory
+        Sysmon Installed
+        WinCollect Agent"]
+
+        WIN10["Windows 10 Client
+        Sysmon Installed
+        WinCollect Agent"]
+
+        UBUNTUCLIENT["Ubuntu 24 Client
+        auditd Enabled"]
+
+    end
+
+
+    %% =========================
+    %% DFIR / EDR
+    %% =========================
+    subgraph DFIR["DFIR / EDR Layer"]
+
+        VELOCI["Ubuntu Velociraptor Server
+        EDR / Evidence Collection
+        Host Isolation"]
+
+    end
+
+
+    %% =========================
+    %% SIEM
+    %% =========================
+    subgraph SIEM["Security Monitoring"]
+
+        QRADAR["IBM QRadar SIEM
+        Correlation Rules
+        Alerting
+        Log Analysis"]
+
+    end
+
+
+    %% =========================
+    %% ATTACK FLOWS
+    %% =========================
+    ART --> WINAD
+    ART --> WIN10
+
+    ATTACKER -->|SSH Brute Force| UBUNTUCLIENT
+
+
+    %% =========================
+    %% LOG FLOWS
+    %% =========================
+    WINAD -->|Sysmon + WinCollect Logs| QRADAR
+    WIN10 -->|Sysmon + WinCollect Logs| QRADAR
+
+    UBUNTUCLIENT -->|auditd Logs| QRADAR
+
+
+    %% =========================
+    %% EDR / DFIR FLOWS
+    %% =========================
+    VELOCI -->|Collect Evidence| WINAD
+    VELOCI -->|Collect Evidence| WIN10
+    VELOCI -->|Collect Evidence| UBUNTUCLIENT
+
+    VELOCI -->|Host Isolation Actions| WIN10
+    VELOCI -->|Host Isolation Actions| WINAD
+
+
+    %% =========================
+    %% ALERTING / DETECTION
+    %% =========================
+    QRADAR -->|Detection Rules
+    Discovery Activity
+    Privilege Escalation
+    Brute Force Detection| VELOCI
+
+
+````
+
+
+
+
+
+---
+
 #### 1. Attack Simulation (Adversary Layer)
 An Ubuntu attacker machine executes scripted attacks:
 - SSH brute-force attacks against Ubuntu clients using Python scripts
