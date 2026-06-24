@@ -220,7 +220,7 @@ This environment demonstrates:
 
 *With Sysmon providing detailed endpoint telemetry, it becomes much easier to detect and analyse the Atomic Red Team simulations, especially when mapping activity to MITRE ATT&CK techniques. This gives the lab more realistic detection scenarios rather than just raw log collection.*
 
-*On top of that, integrating Velociraptor as an EDR adds a practical incident response layer. It reflects how real SOC teams operate — where alerts from a SIEM lead to deeper endpoint investigations, evidence collection, and potential isolation of affected hosts.*
+*On top of that, integrating Velociraptor as an EDR adds a practical incident response layer. It reflects how real SOC teams operate, in which SIEM alerts lead to deeper endpoint investigations, evidence collection, and potential isolation of affected hosts.*
 
 *Overall, the setup mirrors a real-world SOC workflow from detection through to response, using tools and processes that are common in enterprise environments*
 
